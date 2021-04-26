@@ -3,7 +3,7 @@ from flask import Blueprint, render_template
 # blueprint setup
 answer = Blueprint('answer', __name__)
 
-db = firestore.client()
+# db = firestore.client()
 
 @answer.route('/answer')
 def default():
