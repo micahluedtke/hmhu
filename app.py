@@ -12,7 +12,7 @@ Bootstrap(app)
 # connect to db using firebase either here or through the firebase.py file
 
 # Use a service account
-cred = credentials.Certificate('./hmhu-ecds-firebase-adminsdk-kbx6m-1c922e1a60.json')
+cred = credentials.Certificate('./hmhu-ecds-firebase-admin-cred.json')
 firebase_admin.initialize_app(cred)
 
 @app.route('/home')
