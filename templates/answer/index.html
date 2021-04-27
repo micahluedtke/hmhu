@@ -2,6 +2,14 @@
 {% block title %}Home Page{% endblock %}
 {% block content %}
 
-Hello World
+<table border="1">
+    {% for id, answer in list %}
+    <tr>
+      <td>{{id}}</td>
+      <td>{{answer.answer}}</td>
+      <td>{{answer.timestamp}}</td>
+    </tr>
+    {% endfor %}
+</table>
 
 {% endblock %}

@@ -1,7 +1,6 @@
 from flask              import Flask, redirect, render_template
 from flask_bootstrap    import Bootstrap
-from question           import question
-from answer             import answer
+
 import firebase_admin
 from firebase_admin     import credentials, firestore
 
@@ -15,6 +14,9 @@ Bootstrap(app)
 cred = credentials.Certificate('./hmhu-ecds-firebase-admin-cred.json')
 firebase_admin.initialize_app(cred)
 
+from question           import question
+from answer             import answer
+
 @app.route('/home')
 def home():
     db = firestore.client()
@@ -22,10 +24,12 @@ def home():
     # questions = db.collection(u'questions').stream()
     # questions = [(doc.id, doc.to_dict()) for doc in questions]
     # return questions[2]
-    doc_ref = db.collection(u'questions').document(doc_id)
+    doc_ref = db.collection(u'questions').document(doc_id).collection('answers').document('fIJjQQgnIE3qsDtsV6C6')
     doc = doc_ref.get()
+    answer = doc.to_dict()['answer']
     if doc.exists:
-        return f'Document data: {doc.to_dict()}'
+        # return f'Document data: {doc.to_dict()}'
+        return answer
     else:
         return 'No such document!'
 
