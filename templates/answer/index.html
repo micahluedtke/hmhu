@@ -2,14 +2,22 @@
 {% block title %}Home Page{% endblock %}
 {% block content %}
 
-<table border="1">
-    {% for id, answer in list %}
-    <tr>
-      <td>{{id}}</td>
-      <td>{{answer.answer}}</td>
-      <td>{{answer.timestamp}}</td>
-    </tr>
-    {% endfor %}
-</table>
+
+
+
+  
+  {% for question, answers in list.items() %}
+  <table>
+      <th>{{question}}</th>
+          {% for answer in answers %}
+          <tr>
+            <td>{{ answer }}</td><br>
+          </tr>
+          {% endfor %}
+
+    </table>
+  {% endfor %}
+
+  
 
 {% endblock %}

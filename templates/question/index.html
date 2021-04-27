@@ -2,11 +2,12 @@
 {% block title %}Home Page{% endblock %}
 {% block content %}
 
-<form>
+<form method="POST" action=/submitanswer>
     
     <div class="form-outline w-90 mb-4">
-      <label for="answer">{{ list[0] }}</label>
-      <textarea class="form-control" id="answer" rows="4"></textarea>
+      <input type="hidden" id="qid" name="qid" value="{{qid}}">
+      <label for="answer">{{ question }}</label>
+      <textarea class="form-control" id="answer" name="answer"  rows="4"></textarea>
       <small id="emailHelp" class="form-text text-muted">I'm leaving this in a placeholder incase we want to add a comment on the text field</small>
     </div>
     <div class="form-check">

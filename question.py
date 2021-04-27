@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request, redirect
 import firebase_admin
 from firebase_admin     import firestore
 import random
@@ -15,7 +15,17 @@ def default():
     #stream questions collection from firestore
     questions = db.collection(u'questions').stream()
     #create a list of all question_texts 
-    questions = [doc.to_dict()['question_text'] for doc in questions]
+    questions = [(doc.id, doc.to_dict()['question_text']) for doc in questions]
     #randomly select a question from the list of quetions
-    question = [random.choice(questions)]
-    return render_template('question/index.html', list=question)
+    qid, question = random.choice(questions)
+    return render_template('question/index.html', question=question, qid=qid)
+
+@question.route('/submitanswer', methods=['POST'])
+def submitanswer():
+    answer = request.form
+    qid = answer['qid']
+    answer_text = answer['answer']
+    db = firestore.client()
+    answer_ref = db.collection('questions').document(qid).collection('answers')
+    answer_ref.add({'answer':answer_text, 'timestamp':firestore.SERVER_TIMESTAMP})
+    return redirect('/answer')
