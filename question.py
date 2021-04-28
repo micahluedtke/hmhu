@@ -13,19 +13,22 @@ db = firestore.client()
 #the way this is currently written only the question text is getting passed to the html template, so the form won't know the doc.id to pass back when an answer is submitted
 def default():
     #stream questions collection from firestore
-    questions = db.collection(u'questions').stream()
+    questions = db.collection('questions').stream()
     #create a list of all question_texts 
     questions = [(doc.id, doc.to_dict()['question_text']) for doc in questions]
     #randomly select a question from the list of quetions
     qid, question = random.choice(questions)
-    return render_template('question/index.html', question=question, qid=qid)
+    users = db.collection('users').stream()
+    users = [doc.id for doc in users]
+    return render_template('question/index.html', question=question, qid=qid, users=users)
 
 @question.route('/submitanswer', methods=['POST'])
 def submitanswer():
     answer = request.form
     qid = answer['qid']
     answer_text = answer['answer']
+    user = answer['user']
     db = firestore.client()
     answer_ref = db.collection('questions').document(qid).collection('answers')
-    answer_ref.add({'answer':answer_text, 'timestamp':firestore.SERVER_TIMESTAMP})
+    answer_ref.add({'answer':answer_text, 'user': user, 'timestamp':firestore.SERVER_TIMESTAMP})
     return redirect('/answer')

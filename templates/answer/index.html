@@ -2,10 +2,6 @@
 {% block title %}Home Page{% endblock %}
 {% block content %}
 
-
-
-
-  
   {% for question, answers in list.items() %}
   <table>
       <th>{{question}}</th>
@@ -18,6 +14,12 @@
     </table>
   {% endfor %}
 
-  
-
+  {% for question, answers in list.items() %}
+  <ul class="list-group">
+    <li class="list-group-item list-group-item-primary">{{ question }}</li>
+    {% for answer in answers %}
+    <li class="list-group-item">{{ answer }}</li>
+    {% endfor %}
+  </ul>
+  {% endfor %}
 {% endblock %}

@@ -10,6 +10,11 @@
       <textarea class="form-control" id="answer" name="answer"  rows="4"></textarea>
       <small id="emailHelp" class="form-text text-muted">I'm leaving this in a placeholder incase we want to add a comment on the text field</small>
     </div>
+    <select name="user" id="user">
+      {% for user in users %}
+      <option value="{{user}}">{{user}}</option>
+      {% endfor %}
+    </select>
     <div class="form-check">
       <input type="checkbox" class="form-check-input" id="exampleCheck1">
       <label class="form-check-label" for="exampleCheck1">Share my reponse anonymously to help others.</label>
