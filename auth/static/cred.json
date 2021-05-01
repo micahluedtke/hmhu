@@ -7,19 +7,3 @@
     "appId": "1:762730485592:web:9ad93cdc7fed658e8ab72d",
     "measurementId": "G-HPMH42XX6K"
 }
-
-
-// <!-- <script>
-//   // Your web app's Firebase configuration
-//   var firebaseConfig = {
-//     apiKey: "AIzaSyBzfC_tXnF1mw88SYVGc1rdkT2HCZyyOnQ",
-//     authDomain: "hmhu-ecds.firebaseapp.com",
-//     projectId: "hmhu-ecds",
-//     storageBucket: "hmhu-ecds.appspot.com",
-//     messagingSenderId: "762730485592",
-//     appId: "1:762730485592:web:9ad93cdc7fed658e8ab72d",
-//     measurementId: "G-HPMH42XX6K"
-//   };
-//   // Initialize Firebase
-//   firebase.initializeApp(firebaseConfig);
-// </script> -->
