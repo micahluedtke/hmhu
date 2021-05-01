@@ -14,4 +14,27 @@
   </ul>
 </div>
   {% endfor %}
+
+{% for question, answers in list.items() %}
+{% if answers != [] %}
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        {{ question }}
+      </button>
+    </h2>
+      {% for answer in answers %}
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+      {{ answer }}
+      </div>
+    </div>
+      {% endfor %}
+    
+  </div>
+</div>
+{% endif %}
+{% endfor %}
+
 {% endblock %}
