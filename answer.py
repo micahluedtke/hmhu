@@ -1,6 +1,9 @@
 from flask import Blueprint, render_template
 import firebase_admin
 from firebase_admin     import firestore
+#import for login capabilties
+from auth.routes import authentication
+from auth.decorators import login_required
 
 # blueprint setup
 answer = Blueprint('answer', __name__)
