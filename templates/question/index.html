@@ -15,9 +15,17 @@
       <option value="{{user}}">{{user}}</option>
       {% endfor %}
     </select> -->
-    <div class="form-check">
+    <!-- <div class="form-check">
       <input type="checkbox" class="form-check-input" id="exampleCheck1">
       <label class="form-check-label" for="exampleCheck1">Share my reponse anonymously to help others.</label>
+    </div> -->
+    <div class="custom-control custom-radio">
+      <input type="radio" id="share" name="share" class="custom-control-input" value='1'>
+      <label class="custom-control-label" for="share">Share my reponse anonymously to help others.</label>
+    </div>
+    <div class="custom-control custom-radio">
+      <input type="radio" id="noshare" name="share" class="custom-control-input" value='0' checked>
+      <label class="custom-control-label" for="noshare">Keep this private.</label>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 

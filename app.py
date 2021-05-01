@@ -20,10 +20,14 @@ firebase_admin.initialize_app(cred)
 
 from question           import question
 from answer             import answer
+from myanswer           import myanswer
+from resources          import resources
 
 # register blueprints
 app.register_blueprint(question)
 app.register_blueprint(answer)
+app.register_blueprint(myanswer)
+app.register_blueprint(resources)
 app.register_blueprint(authentication, url_prefix='/auth')
 
 # the default route is index

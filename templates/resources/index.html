@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Home Page{% endblock %}
+{% block content %}
+
+<h1>Here are some resources:</h1>
+{% for type, resources in list.items() %}
+<ul class="list-group">
+  <li class="list-group-item list-group-item-primary">{{ type }}</li>
+  {% for resource in resources %}
+  <li class="list-group-item" ><a href='{{ resource }}'>{{ resource }}</a></li>
+  {% endfor %}
+</ul>
+{% endfor %}
+{% endblock %}

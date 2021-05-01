@@ -25,7 +25,7 @@ def default():
     qid, question = random.choice(questions)
     users = db.collection('users').stream()
     users = [doc.id for doc in users]
-    print(request.user)
+    # print(request.user)
     return render_template('question/index.html', question=question, qid=qid, users=users)
 
 @question.route('/submitanswer', methods=['POST'])
@@ -36,8 +36,9 @@ def submitanswer():
     answer_text = answer['answer']
     db = firestore.client()
     user = request.user['uid']
+    share = answer['share']
     answer_ref = db.collection('questions').document(qid).collection('answers')
-    answer_ref.add({'answer':answer_text, 'user': user, 'timestamp':firestore.SERVER_TIMESTAMP})
+    answer_ref.add({'answer':answer_text, 'user': user, 'share':share, 'timestamp':firestore.SERVER_TIMESTAMP})
     return redirect('/answer')
 
 
