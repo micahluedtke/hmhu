@@ -1,7 +1,7 @@
 <!-- Import Firebase UI Stylesheet -->
 <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.0/firebase-ui-auth.css" />
   
-<link rel="import" href="cred.json" id=cred>
+<!-- <link rel="import" href="cred.json" id=cred> -->
 
 
 <h1>Welcome to HMHU</h1>
@@ -13,10 +13,27 @@
 
 <script>
   // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyBzfC_tXnF1mw88SYVGc1rdkT2HCZyyOnQ",
+    authDomain: "hmhu-ecds.firebaseapp.com",
+    projectId: "hmhu-ecds",
+    storageBucket: "hmhu-ecds.appspot.com",
+    messagingSenderId: "762730485592",
+    appId: "1:762730485592:web:9ad93cdc7fed658e8ab72d",
+    measurementId: "G-HPMH42XX6K"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+
+
+<!-- <script>
+  // Your web app's Firebase configuration
   var firebaseConfig = document.getElementById('cred').import;
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
-</script> 
+</script>  -->
 
 
 <!-- Add Firebase products that you want to use -->
