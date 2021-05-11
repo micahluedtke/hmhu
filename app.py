@@ -17,7 +17,7 @@ Bootstrap(app)
 # Use a service account
 # cred = credentials.Certificate('./hmhu-ecds-firebase-admin-cred.json')
 # firebase_admin.initialize_app(cred)
-firebase_admin.intialize_app()
+firebase_admin.initialize_app()
 
 from question           import question
 from answer             import answer
