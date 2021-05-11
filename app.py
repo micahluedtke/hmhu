@@ -14,16 +14,23 @@ Bootstrap(app)
 
 # connect to db using firebase either here or through the firebase.py file
 
+# old code that works 
+# cred = credentials.Certificate('./hmhu-ecds-firebase-admin-cred.json')
+# firebase_admin.initialize_app(cred)
+
 # Use a service account
 import os
-os.environ['FIREBASE_CONFIG']
+cred = os.environ['FIREBASE_CONFIG']
+
 debug = True
-if 'FIREBASE_CONFIG' in os.environ:
+if 'FIREBASE_CONFIG' in os:
     debug = False
-    firebase_admin.initialize_app()
+    firebase_admin.initialize_app(cred)
 else:
     cred = credentials.Certificate('./hmhu-ecds-firebase-admin-cred.json')
     firebase_admin.initialize_app(cred)
+
+# end experiemne
 
 from question           import question
 from answer             import answer
