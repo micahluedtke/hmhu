@@ -15,8 +15,9 @@ Bootstrap(app)
 # connect to db using firebase either here or through the firebase.py file
 
 # Use a service account
-cred = credentials.Certificate('./hmhu-ecds-firebase-admin-cred.json')
-firebase_admin.initialize_app(cred)
+# cred = credentials.Certificate('./hmhu-ecds-firebase-admin-cred.json')
+# firebase_admin.initialize_app(cred)
+firebase_admin.intialize_app()
 
 from question           import question
 from answer             import answer
@@ -34,7 +35,7 @@ app.register_blueprint(authentication, url_prefix='/auth')
 @app.route('/')
 @login_required
 def default():    
-    return render_template('base.html')
+    return render_template('home.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
