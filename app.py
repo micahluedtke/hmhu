@@ -1,7 +1,7 @@
 from flask              import Flask, redirect, render_template
 from flask_bootstrap    import Bootstrap
 
-import firebase_admin
+import firebase_admin, os
 from firebase_admin     import credentials, firestore
 
 #import for login capabilties
@@ -19,13 +19,9 @@ Bootstrap(app)
 # firebase_admin.initialize_app(cred)
 
 # Use a service account
-import os
-cred = os.environ['FIREBASE_CONFIG']
-
 debug = True
-if 'FIREBASE_CONFIG' in os:
-    debug = False
-    firebase_admin.initialize_app(cred)
+if 'FIREBASE_CONFIG' in os.environ:
+    firebase_admin.initialize_app()
 else:
     cred = credentials.Certificate('./hmhu-ecds-firebase-admin-cred.json')
     firebase_admin.initialize_app(cred)
