@@ -19,9 +19,11 @@ Bootstrap(app)
 # firebase_admin.initialize_app(cred)
 
 # Use a service account
-debug = True
 if 'FIREBASE_CONFIG' in os.environ:
-    firebase_admin.initialize_app()
+    cert = open("FIREBASE_CONFIG.json", 'w')
+    cert.write(os.environ['FIREBASE_CONFIG'])
+    cred = credentials.Certificate(cert)
+    firebase_admin.initialize_app(cred)
 else:
     cred = credentials.Certificate('./hmhu-ecds-firebase-admin-cred.json')
     firebase_admin.initialize_app(cred)
