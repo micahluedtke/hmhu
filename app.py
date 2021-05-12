@@ -1,4 +1,4 @@
-from flask              import Flask, redirect, render_template
+from flask              import Flask, redirect, render_template, jsonify
 from flask_bootstrap    import Bootstrap
 
 import firebase_admin, os
@@ -20,7 +20,7 @@ Bootstrap(app)
 
 # Use a service account
 if 'FIREBASE_CONFIG' in os.environ:
-    cert = os.environ['FIREBASE_CONFIG'].to_dict()
+    cert = jsonify(os.environ['FIREBASE_CONFIG'])
     cred = credentials.Certificate(cert)
     firebase_admin.initialize_app(cred)
 else:
