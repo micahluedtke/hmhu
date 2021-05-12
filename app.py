@@ -20,8 +20,7 @@ Bootstrap(app)
 
 # Use a service account
 if 'FIREBASE_CONFIG' in os.environ:
-    cert = open("FIREBASE_CONFIG.json", 'w')
-    cert.write(os.environ['FIREBASE_CONFIG'])
+    cert = os.environ['FIREBASE_CONFIG'].to_dict()
     cred = credentials.Certificate(cert)
     firebase_admin.initialize_app(cred)
 else:
